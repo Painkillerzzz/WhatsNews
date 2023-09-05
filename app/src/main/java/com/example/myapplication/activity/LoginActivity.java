@@ -1,6 +1,5 @@
 package com.example.myapplication.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,12 +36,16 @@ public class LoginActivity extends AppCompatActivity {
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if  (usernameEditText.getText().toString().equals("") || passwordEditText.getText().toString().equals("")) {
+                String usernameInput = usernameEditText.getText().toString();
+                String passwordInput = passwordEditText.getText().toString();
+                if  (usernameInput.equals("") || passwordInput.equals("")) {
                     Toast.makeText(LoginActivity.this, "Please enter a username and password", Toast.LENGTH_SHORT).show();
-                } else if  (usernameEditText.getText().toString().equals("admin") && passwordEditText.getText().toString().equals("admin")) {
+                } else if  (usernameInput.equals("admin") && passwordInput.equals("admin")) {
                     startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
+                    finish();
+                    Toast.makeText(LoginActivity.this, "Logged in as " + usernameInput, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT);
+                    Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
                 }
             }
         });

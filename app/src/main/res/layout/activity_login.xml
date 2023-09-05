@@ -6,94 +6,99 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_login">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/appTitleImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:srcCompat="@drawable/app_title" />
 
-        <ImageView
-            android:id="@+id/appTitleImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:srcCompat="@drawable/app_title" />
+    <TextView
+        android:id="@+id/userText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="User"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appTitleImage" />
 
-        <TextView
-            android:id="@+id/userText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="User"
-            android:fontFamily="sans-serif-black"
-            android:textSize="35sp" />
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="12dp"
+        android:hint="username"
+        android:singleLine="true"
+        android:textColorHint="#FF8F8F8F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userText" />
 
-        <EditText
-            android:id="@+id/usernameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:singleLine="true"
-            android:layout_marginHorizontal="35dp"
-            android:hint="username"
-            android:textColorHint="#FF8F8F8F" />
+    <TextView
+        android:id="@+id/passwordText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="Password"
+        android:textSize="14pt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
 
-        <TextView
-            android:id="@+id/passwordText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:fontFamily="sans-serif-black"
-            android:text="Password"
-            android:textSize="14pt" />
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="16dp"
+        android:hint="password"
+        android:singleLine="true"
+        android:textColorHint="#FF8F8F8F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordText" />
 
-        <EditText
-            android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:singleLine="true"
-            android:layout_marginHorizontal="35dp"
-            android:hint="password"
-            android:textColorHint="#FF8F8F8F" />
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="35dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="Login"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5pt"
-            android:layout_marginVertical="15pt"
-            android:orientation="horizontal">
+    <Button
+        android:id="@+id/createAccountButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="70dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Doesn't have an account? \nCreate one here!"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        app:layout_constraintVertical_bias="0.0" />
 
-            <Button
-                android:id="@+id/createAccountButton"
-                android:layout_width="0pt"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="10pt"
-                android:layout_weight="1.0"
-                android:gravity="center"
-                android:text="Create\nAccount"
-                android:textSize="10pt" />
-
-            <Button
-                android:id="@+id/loginButton"
-                android:layout_width="0pt"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:gravity="center"
-                android:text="Login"
-                android:textSize="10pt" />
-        </LinearLayout>
-
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
