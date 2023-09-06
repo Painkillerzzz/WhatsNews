@@ -28,7 +28,7 @@ public class NavigationActivity extends AppCompatActivity implements ProfileFrag
     CategoryFragment categoryFragment;
     ProfileFragment profileFragment;
 
-    @Override  
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
@@ -61,11 +61,17 @@ public class NavigationActivity extends AppCompatActivity implements ProfileFrag
         bottomNavigationView.setSelectedItemId(selectedItem);
     }
 
-//    @Override
-//    protected void onSaveInstanceState(@NonNull Bundle outState) {
-//        outState.putInt("selectedItem", selectedItem);
-//        super.onSaveInstanceState(outState);
-//    }
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putInt("selectedItem", selectedItem);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        selectedItem = savedInstanceState.getInt("selectedItem");
+    }
 
     @Override
     public void onButtonClick() {
