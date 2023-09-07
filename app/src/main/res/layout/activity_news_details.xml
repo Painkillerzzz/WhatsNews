@@ -1,0 +1,165 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 标题栏 -->
+    <RelativeLayout
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_arrow_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/back_btn"
+            android:text="Whats News"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- 新闻内容 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_bar"
+        android:padding="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <!-- 新闻标题 -->
+            <TextView
+                android:id="@+id/text_title_news_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="News Title"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 新闻图片 -->
+            <ImageView
+                android:id="@+id/image_news_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_title_news_details"
+                tools:srcCompat="@drawable/bg_image_logined" />
+
+            <!-- 新闻发布者 -->
+            <TextView
+                android:id="@+id/text_publisher_news_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Publisher"
+                android:textSize="20sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_news_details" />
+
+            <!-- 新闻发布日期 -->
+            <TextView
+                android:id="@+id/text_date_news_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2023-01-01 19:00"
+                android:textSize="20sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toEndOf="@+id/text_publisher_news_details"
+                app:layout_constraintTop_toBottomOf="@+id/image_news_details" />
+
+            <!-- 新闻内容 -->
+            <TextView
+                android:id="@+id/text_content_news_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Content Content Content Content Content Content Content Content Content Content
+                    Content Content Content Content Content Content Content Content Content Content
+                    Content Content Content Content Content Content Content Content Content Content
+                    Content Content Content Content Content Content Content Content Content Content
+                    Content Content Content Content Content Content Content Content Content Content
+                    Content Content Content Content Content Content Content Content Content Content
+                    Content Content Content Content Content Content Content Content Content Content
+                    Content Content Content Content Content Content Content Content Content Content
+                    Content Content Content Content Content Content Content Content Content Content"
+                android:textSize="15sp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_publisher_news_details" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <!-- 操作按钮容器 -->
+    <LinearLayout
+        android:id="@+id/action_buttons_container"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <!-- 分享按钮 -->
+        <ImageView
+            android:id="@+id/share_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:onClick="onShareButtonClick"
+            android:src="@drawable/icon_share" />
+
+        <!-- 评论按钮 -->
+        <ImageView
+            android:id="@+id/comment_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:onClick="onCommentButtonClick"
+            android:src="@drawable/icon_comment" />
+
+        <!-- 点赞按钮 -->
+        <ImageView
+            android:id="@+id/like_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:onClick="onLikeButtonClick"
+            android:src="@drawable/icon_favorite_border" />
+
+    </LinearLayout>
+
+</RelativeLayout>

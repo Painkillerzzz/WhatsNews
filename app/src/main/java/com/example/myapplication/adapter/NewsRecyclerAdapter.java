@@ -9,12 +9,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.activity.NewsDetailsActivity;
-import com.example.myapplication.fragment.NewsListFragment;
 import com.example.myapplication.model.NewsItem;
 
 import org.w3c.dom.Text;
@@ -22,10 +23,11 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapter.NewsOverviewViewHolder>{
-
+    private Context context;
     private List<NewsItem>  newsList;
 
-    public NewsRecyclerAdapter(List<NewsItem> newsList) {
+    public NewsRecyclerAdapter(Context context, List<NewsItem> newsList) {
+        this.context = context;
         this.newsList = newsList;
     }
 
@@ -44,9 +46,21 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
         holder.publisher.setText(news.getPublisher());
         holder.date.setText(news.getDate());
 
+        Glide.with(context)
+                .load(news.getImage())
+                .placeholder(R.drawable.placeholder_image)
+                .fallback(R.drawable.error_image)
+                .error(R.drawable.error_image)
+                .into(holder.picture);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                holder.title.setTextColor(ContextCompat.getColor(view.getContext(), R.color.gray));
+                holder.publisher.setTextColor(ContextCompat.getColor(view.getContext(), R.color.gray));
+                holder.date.setTextColor(ContextCompat.getColor(view.getContext(), R.color.gray));
+
                 Context context = view.getContext();
                 Intent intent = new Intent(context, NewsDetailsActivity.class);
 
@@ -54,6 +68,11 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
                 intent.putExtra("news_publisher", news.getPublisher());
                 intent.putExtra("news_date", news.getDate());
                 intent.putExtra("news_content", news.getContent());
+                intent.putExtra("news_picture", news.getImage());
+                intent.putExtra("news_video", news.getVideo());
+                intent.putExtra("news_id", news.getId());
+                intent.putExtra("news_state_liked", news.getStateLiked());
+                intent.putExtra("news_state_comment", news.getStateCommented());
 
                 context.startActivity(intent);
             }
@@ -81,6 +100,5 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
 
     public void setNewsItemList(List<NewsItem> newsList) {
         this.newsList = newsList;
-        notifyDataSetChanged();
     }
 }
