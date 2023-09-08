@@ -30,6 +30,16 @@ public class NewsApiClient extends AsyncTask<Void, Void, List<NewsItem>> {
     private String words = "特朗普";
     private String categories = "科技";
 
+    public NewsApiClient(NewsApiCallback callback) {
+        this.callback = callback;
+    }
+
+    public NewsApiClient(NewsApiCallback callback, int size, int page) {
+        this.callback = callback;
+        this.size = size;
+        this.page = page;
+    }
+
     public NewsApiClient(NewsApiCallback callback, int size, int page, String startDate, String endDate, String words, String categories) {
         this.callback = callback;
         this.size = size;
@@ -40,19 +50,18 @@ public class NewsApiClient extends AsyncTask<Void, Void, List<NewsItem>> {
         this.categories = categories;
     }
 
-    public NewsApiClient(NewsApiCallback callback) {
-        this.callback = callback;
-    }
-
     @Override
     protected List<NewsItem> doInBackground(Void... voids) {
         OkHttpClient client = new OkHttpClient();
         String url = "https://api2.newsminer.net/svc/news/queryNewsList?";
 
-        if (size != 0) {
+        if (size > 0) {
             url += "size=" + size;
         } else {
             url += "size=15&page=1";
+        }
+        if (page > 0) {
+            url += "&page=" + page;
         }
         if (startDate != null) {
             url += "&startDate=" + startDate;

@@ -42,18 +42,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            tools:layout_editor_absoluteX="20dp"
+            tools:layout_editor_absoluteY="20dp">
 
             <!-- 新闻标题 -->
             <TextView
                 android:id="@+id/text_title_news_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="News Title"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -63,8 +63,8 @@
                 android:id="@+id/image_news_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
                 android:layout_marginTop="20dp"
+                android:adjustViewBounds="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_title_news_details"
@@ -75,10 +75,10 @@
                 android:id="@+id/text_publisher_news_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Publisher"
-                android:textSize="20sp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="20dp"
+                android:text="Publisher"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_news_details" />
 
@@ -87,10 +87,10 @@
                 android:id="@+id/text_date_news_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2023-01-01 19:00"
-                android:textSize="20sp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="20dp"
+                android:text="2023-01-01 19:00"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/text_publisher_news_details"
                 app:layout_constraintTop_toBottomOf="@+id/image_news_details" />
 
@@ -99,6 +99,8 @@
                 android:id="@+id/text_content_news_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="20dp"
                 android:text="Content Content Content Content Content Content Content Content Content Content
                     Content Content Content Content Content Content Content Content Content Content
                     Content Content Content Content Content Content Content Content Content Content
@@ -109,10 +111,8 @@
                     Content Content Content Content Content Content Content Content Content Content
                     Content Content Content Content Content Content Content Content Content Content"
                 android:textSize="15sp"
-                android:layout_marginHorizontal="5dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_publisher_news_details" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

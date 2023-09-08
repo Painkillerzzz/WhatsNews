@@ -22,6 +22,7 @@ public class NavigationActivity extends AppCompatActivity implements ProfileFrag
 
     private Button button;
     private int selectedItem = R.id.menu_newest;
+    private  boolean hasLoggedIn = false;
 
     BottomNavigationView bottomNavigationView;
     NewsListFragment newsListFragment;
