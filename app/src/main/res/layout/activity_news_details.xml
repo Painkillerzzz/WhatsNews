@@ -54,21 +54,26 @@
                 android:text="News Title"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/black"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 新闻视频 -->
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/video_news_details"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintTop_toBottomOf="@+id/text_title_news_details"
+                android:layout_gravity="center" />
 
             <!-- 新闻图片 -->
             <ImageView
                 android:id="@+id/image_news_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_title_news_details"
-                tools:srcCompat="@drawable/bg_image_logined" />
+                app:layout_constraintTop_toBottomOf="@+id/video_news_details"
+                tools:srcCompat="@drawable/bg_image_logged_in" />
 
             <!-- 新闻发布者 -->
             <TextView
@@ -79,6 +84,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Publisher"
                 android:textSize="20sp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_news_details" />
 
@@ -91,6 +97,7 @@
                 android:layout_marginTop="20dp"
                 android:text="2023-01-01 19:00"
                 android:textSize="20sp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/text_publisher_news_details"
                 app:layout_constraintTop_toBottomOf="@+id/image_news_details" />
 
@@ -111,9 +118,9 @@
                     Content Content Content Content Content Content Content Content Content Content
                     Content Content Content Content Content Content Content Content Content Content"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/black"
                 app:layout_constraintTop_toBottomOf="@+id/text_publisher_news_details" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -129,7 +136,7 @@
 
         <!-- 分享按钮 -->
         <ImageView
-            android:id="@+id/share_button"
+            android:id="@+id/share_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -140,7 +147,7 @@
 
         <!-- 评论按钮 -->
         <ImageView
-            android:id="@+id/comment_button"
+            android:id="@+id/comment_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -151,7 +158,7 @@
 
         <!-- 点赞按钮 -->
         <ImageView
-            android:id="@+id/like_button"
+            android:id="@+id/like_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

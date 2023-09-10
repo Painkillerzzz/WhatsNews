@@ -21,11 +21,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        createAccountButton = (Button) findViewById(R.id.createAccountButton);
-        loginButton = (Button) findViewById(R.id.loginButton);
+        createAccountButton = findViewById(R.id.createAccountButton);
+        loginButton = findViewById(R.id.loginButton);
 
-        usernameEditText = (EditText) findViewById(R.id.usernameEditText);
-        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
+        usernameEditText = findViewById(R.id.usernameEditText);
+        passwordEditText = findViewById(R.id.passwordEditText);
 
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -41,7 +41,10 @@ public class LoginActivity extends AppCompatActivity {
                 if  (usernameInput.equals("") || passwordInput.equals("")) {
                     Toast.makeText(LoginActivity.this, "Please enter a username and password", Toast.LENGTH_SHORT).show();
                 } else if  (usernameInput.equals("admin") && passwordInput.equals("admin")) {
-                    startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
+                    Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
+                    intent.putExtra("loginState", true);
+                    intent.putExtra("userName", usernameInput);
+                    startActivity(intent);
                     finish();
                     Toast.makeText(LoginActivity.this, "Logged in as " + usernameInput, Toast.LENGTH_SHORT).show();
                 } else {

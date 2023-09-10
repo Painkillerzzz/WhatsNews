@@ -19,6 +19,8 @@ import java.util.regex.Pattern;
 
 import android.os.AsyncTask;
 
+import androidx.annotation.NonNull;
+
 public class NewsApiClient extends AsyncTask<Void, Void, List<NewsItem>> {
 
     private NewsApiCallback callback;
@@ -26,9 +28,9 @@ public class NewsApiClient extends AsyncTask<Void, Void, List<NewsItem>> {
     private int size;
     private int page;
     private String startDate = "2020-08-20";
-    private String endDate =  "2023-09-06";
-    private String words = "特朗普";
-    private String categories = "科技";
+    private String endDate =  "2021-09-02";
+    private String words = "八部门";
+    private String categories;
 
     public NewsApiClient(NewsApiCallback callback) {
         this.callback = callback;
@@ -125,8 +127,8 @@ public class NewsApiClient extends AsyncTask<Void, Void, List<NewsItem>> {
                 String title = jsonNewsItem.getString("title");
                 String publisher = jsonNewsItem.getString("publisher");
                 String date = jsonNewsItem.getString("publishTime");
-                String video = jsonNewsItem.getString("video");
-                String image = parseUrl(jsonNewsItem.getString("image"));
+                String video = parseHttpUrl(jsonNewsItem.getString("video"));
+                String image = parseHttpUrl(parseImageUrl(jsonNewsItem.getString("image")));
                 String category = jsonNewsItem.getString("category");
                 String content = jsonNewsItem.getString("content");
 
@@ -149,7 +151,17 @@ public class NewsApiClient extends AsyncTask<Void, Void, List<NewsItem>> {
         return newsItemList;
     }
 
-    private  String parseUrl(String inputString) {
+    private String parseHttpUrl(@NonNull String inputUrl) {
+        String httpsUrl = inputUrl.replaceAll("http://", "https://");
+
+        if (inputUrl.startsWith("https://")) {
+            httpsUrl = inputUrl;
+        }
+
+        return httpsUrl;
+    }
+
+    private  String parseImageUrl(String inputString) {
         String regex = "\\[([^\\]]+)\\]";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(inputString);

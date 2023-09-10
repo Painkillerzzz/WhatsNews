@@ -2,21 +2,49 @@ package com.example.myapplication.model;
 
 import java.util.List;
 import com.orm.SugarRecord;
+import com.orm.dsl.Column;
 import com.orm.dsl.Table;
 
 public class NewsItem extends SugarRecord {
+    @Column(name = "news_id", unique = true)
     private String newsId;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "category")
     private String category;
+
+    @Column(name = "keywords")
     private List<String> keywords;
+
+    @Column(name = "publisher")
     private String publisher;
+
+    @Column(name = "date")
     private  String date;
+
+    @Column(name = "imageUrl")
     public String image;
+
+    @Column(name = "videoUrl")
     public String video;
+
+    @Column(name = "content")
     private String content;
+
+    @Column(name = "is_read")
     private boolean isRead;
+
+    @Column(name = "is_liked")
     private boolean isLiked;
+
+    @Column(name = "is_commented")
     private boolean isCommented;
+
+    @Column(name = "comments")
+    private String comments;
+
 
     public NewsItem() {
         this.newsId = "0000000";
@@ -31,6 +59,7 @@ public class NewsItem extends SugarRecord {
         this.isRead = false;
         this.isLiked =  false;
         this.isCommented = false;
+        this.comments = "";
     }
 
     public NewsItem(String newsId, String title, String category, List<String> keywords, String publisher, String date, String video, String image, String content) {
@@ -43,6 +72,10 @@ public class NewsItem extends SugarRecord {
         this.video = video;
         this.image = image;
         this.content = content;
+        this.isRead = false;
+        this.isLiked =  false;
+        this.isCommented = false;
+        this.comments = "";
     }
 
     public String getNewsId() { return newsId; }

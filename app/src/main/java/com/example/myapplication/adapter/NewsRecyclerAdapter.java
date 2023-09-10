@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.activity.NewsDetailsActivity;
 import com.example.myapplication.model.NewsItem;
+import com.example.myapplication.service.SaveNewsTask;
 
 import org.w3c.dom.Text;
 
@@ -53,6 +54,18 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
                 .error(R.drawable.error_image)
                 .into(holder.picture);
 
+        if (news.getImage().isEmpty()) {
+            holder.picture.setVisibility(View.GONE);
+        }
+        else {
+            Glide.with(context)
+                    .load(news.getImage())
+                    .placeholder(R.drawable.placeholder_image)
+                    .fallback(R.drawable.error_image)
+                    .error(R.drawable.error_image)
+                    .into(holder.picture);
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +86,9 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
                 intent.putExtra("news_id", news.getId());
                 intent.putExtra("news_state_liked", news.getStateLiked());
                 intent.putExtra("news_state_comment", news.getStateCommented());
+
+                SaveNewsTask saveNewsTask = new SaveNewsTask();
+                saveNewsTask.execute(news);
 
                 context.startActivity(intent);
             }
