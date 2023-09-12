@@ -17,6 +17,8 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.activity.NewsDetailsActivity;
 import com.example.myapplication.model.NewsItem;
+import com.example.myapplication.model.UserData;
+import com.example.myapplication.model.UserDataManager;
 import com.example.myapplication.service.SaveNewsTask;
 
 import org.w3c.dom.Text;
@@ -43,9 +45,24 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull NewsOverviewViewHolder holder, int position) {
         NewsItem news = newsList.get(position);
+
         holder.title.setText(news.getTitle());
         holder.publisher.setText(news.getPublisher());
         holder.date.setText(news.getDate());
+
+        holder.title.setTextColor(ContextCompat.getColor(context, R.color.black));
+        holder.publisher.setTextColor(ContextCompat.getColor(context, R.color.black));
+        holder.date.setTextColor(ContextCompat.getColor(context, R.color.black));
+
+        UserDataManager userDataManager = UserDataManager.getInstance();
+
+        if (userDataManager.getUser() != null) {
+            if (userDataManager.getUserReadNewsIds().contains(news.getNewsId())) {
+                holder.title.setTextColor(ContextCompat.getColor(context, R.color.gray));
+                holder.publisher.setTextColor(ContextCompat.getColor(context, R.color.gray));
+                holder.date.setTextColor(ContextCompat.getColor(context, R.color.gray));
+            }
+        }
 
         Glide.with(context)
                 .load(news.getImage())
@@ -60,9 +77,9 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
         else {
             Glide.with(context)
                     .load(news.getImage())
-                    .placeholder(R.drawable.placeholder_image)
-                    .fallback(R.drawable.error_image)
-                    .error(R.drawable.error_image)
+//                    .placeholder(R.drawable.placeholder_image)
+//                    .fallback(R.drawable.error_image)
+//                    .error(R.drawable.error_image)
                     .into(holder.picture);
         }
 
@@ -77,6 +94,7 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
                 Context context = view.getContext();
                 Intent intent = new Intent(context, NewsDetailsActivity.class);
 
+                intent.putExtra("news_id_not_null", news.getNewsId());
                 intent.putExtra("news_title", news.getTitle());
                 intent.putExtra("news_publisher", news.getPublisher());
                 intent.putExtra("news_date", news.getDate());
@@ -84,13 +102,12 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapte
                 intent.putExtra("news_picture", news.getImage());
                 intent.putExtra("news_video", news.getVideo());
                 intent.putExtra("news_id", news.getId());
-                intent.putExtra("news_state_liked", news.getStateLiked());
-                intent.putExtra("news_state_comment", news.getStateCommented());
+
+                context.startActivity(intent);
 
                 SaveNewsTask saveNewsTask = new SaveNewsTask();
                 saveNewsTask.execute(news);
 
-                context.startActivity(intent);
             }
         });
     }

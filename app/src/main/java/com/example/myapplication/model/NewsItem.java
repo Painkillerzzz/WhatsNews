@@ -1,10 +1,14 @@
 package com.example.myapplication.model;
 
 import java.util.List;
+
+import com.example.myapplication.fragment.Comment;
 import com.orm.SugarRecord;
 import com.orm.dsl.Column;
 import com.orm.dsl.Table;
 
+
+@Table(name = "NewsItem")
 public class NewsItem extends SugarRecord {
     @Column(name = "news_id", unique = true)
     private String newsId;
@@ -33,17 +37,8 @@ public class NewsItem extends SugarRecord {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "is_read")
-    private boolean isRead;
-
-    @Column(name = "is_liked")
-    private boolean isLiked;
-
-    @Column(name = "is_commented")
-    private boolean isCommented;
-
     @Column(name = "comments")
-    private String comments;
+    private List<Comment> comments;
 
 
     public NewsItem() {
@@ -56,10 +51,7 @@ public class NewsItem extends SugarRecord {
         this.image = "dsds";
         this.video = "dsds";
         this.content = "假如如一间铁屋子，是绝无窗户而万难破毀的，里面有许多熟睡的人们，不久都要闷死了，然而是从昏睡入死灭，并不感到就死的悲哀。现在你大嚷起来，惊起了较为清醒的几个人，使这不幸的少数者来受无可挽救的临终的苦楚，你倒以为对得起他们么？";
-        this.isRead = false;
-        this.isLiked =  false;
-        this.isCommented = false;
-        this.comments = "";
+        this.comments = null;
     }
 
     public NewsItem(String newsId, String title, String category, List<String> keywords, String publisher, String date, String video, String image, String content) {
@@ -72,10 +64,7 @@ public class NewsItem extends SugarRecord {
         this.video = video;
         this.image = image;
         this.content = content;
-        this.isRead = false;
-        this.isLiked =  false;
-        this.isCommented = false;
-        this.comments = "";
+        this.comments = null;
     }
 
     public String getNewsId() { return newsId; }
@@ -100,10 +89,6 @@ public class NewsItem extends SugarRecord {
 
     public String getContent() { return content; }
 
-    public boolean getStateRead() { return isRead; }
-
-    public boolean getStateLiked() { return isLiked; }
-
-    public boolean getStateCommented() { return isCommented; }
+    public void setComments(List<Comment> comments) { this.comments = comments; }
 
 }

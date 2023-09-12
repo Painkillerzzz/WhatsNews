@@ -18,6 +18,7 @@ import com.example.myapplication.service.NewsApiClient;
 import com.example.myapplication.adapter.NewsRecyclerAdapter;
 import com.example.myapplication.model.NewsItem;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class NewsListFragment extends Fragment implements NewsApiClient.NewsApiC
                     if (!recyclerView.canScrollVertically(1)) {
                         if (newsApiClient.getStatus() == AsyncTask.Status.FINISHED) {
                             requestPage = requestPage + 1;
-                            newsApiClient = new NewsApiClient(NewsListFragment.this, 15, requestPage);
+                            newsApiClient = new NewsApiClient(NewsListFragment.this, 15, requestPage, "2020-01-01", LocalDate.now().toString());
                             newsApiClient.execute();
                         }
                     }
@@ -75,7 +76,7 @@ public class NewsListFragment extends Fragment implements NewsApiClient.NewsApiC
                 public void onRefresh() {
                     if (newsApiClient.getStatus() == AsyncTask.Status.FINISHED){
                         requestPage = 1;
-                        newsApiClient =  new NewsApiClient(NewsListFragment.this,  15, 1);
+                        newsApiClient =  new NewsApiClient(NewsListFragment.this,  15, 1, "2020-01-01", LocalDate.now().toString());
                         newsApiClient.execute();
                     }
                     else {
@@ -94,12 +95,16 @@ public class NewsListFragment extends Fragment implements NewsApiClient.NewsApiC
         if (fetchedNewsItemList != null) {
             if (newsItemList.isEmpty()) {
                 // 如果当前列表为空，则说明是首次加载
-                Toast.makeText(getContext(), "News received", Toast.LENGTH_SHORT).show();
+                if (getContext() != null) {
+                    Toast.makeText(getContext(), "News received", Toast.LENGTH_SHORT).show();
+                }
                 newsItemList = fetchedNewsItemList;
                 adapter.setNewsItemList(this.newsItemList);
             } else {
                 // 如果当前列表不为空，说明是下拉刷新
-                Toast.makeText(getContext(), "News updated", Toast.LENGTH_SHORT).show();
+                 if (getContext() != null) {
+                     Toast.makeText(getContext(), "News updated", Toast.LENGTH_SHORT).show();
+                 }
                 // 清空原有数据，然后添加新数据
                 if (recyclerView.canScrollVertically(1)){
                     newsItemList.clear();
@@ -109,7 +114,9 @@ public class NewsListFragment extends Fragment implements NewsApiClient.NewsApiC
             }
             adapter.notifyDataSetChanged(); // 更新 RecyclerView
         } else {
-            Toast.makeText(getContext(), "No news received", Toast.LENGTH_SHORT).show();
+            if (getContext() != null) {
+                Toast.makeText(getContext(), "No news received", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

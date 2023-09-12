@@ -29,7 +29,7 @@ public class NewsApiClient extends AsyncTask<Void, Void, List<NewsItem>> {
     private int page;
     private String startDate = "2020-08-20";
     private String endDate =  "2021-09-02";
-    private String words = "八部门";
+    private String words = "科技";
     private String categories;
 
     public NewsApiClient(NewsApiCallback callback) {
@@ -40,6 +40,13 @@ public class NewsApiClient extends AsyncTask<Void, Void, List<NewsItem>> {
         this.callback = callback;
         this.size = size;
         this.page = page;
+    }
+    public NewsApiClient(NewsApiCallback callback, int size, int page, String startDate, String endDate) {
+        this.callback = callback;
+        this.size = size;
+        this.page = page;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public NewsApiClient(NewsApiCallback callback, int size, int page, String startDate, String endDate, String words, String categories) {

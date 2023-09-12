@@ -15,6 +15,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/logoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_logout"/>
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageButton"
             android:layout_width="160dp"
@@ -26,8 +34,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/circleImageStyle"
-            app:srcCompat="@drawable/avatar"
-            app:strokeColor="#FFFFFF" />
+            app:srcCompat="@drawable/icon_profile_picture"
+            app:strokeColor="#FFFFFF"
+            android:clickable="true"/>
 
         <TextView
             android:id="@+id/profile_name"
@@ -45,6 +54,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
+        android:id="@+id/loggedInControlBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -80,5 +90,12 @@
             android:text="History"
             style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/loggedInControlBar"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
