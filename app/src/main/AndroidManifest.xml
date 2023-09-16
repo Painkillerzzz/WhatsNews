@@ -48,11 +48,6 @@
         </activity>
 
         <activity
-            android:name=".service.NewsApiClient"
-            android:exported="false">
-        </activity>
-
-        <activity
             android:name=".activity.CreateAccountActivity"
             android:exported="false">
         </activity>

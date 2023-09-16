@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Checkable buttons -->
+    <CheckBox
+        android:id="@+id/checkAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="全部"/>
+
+    <CheckBox
+        android:id="@+id/checkEntertainment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="娱乐"/>
+
+    <CheckBox
+        android:id="@+id/checkMilitary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="军事"/>
+
+    <CheckBox
+        android:id="@+id/checkEducation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="教育"/>
+
+    <CheckBox
+        android:id="@+id/checkCulture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="文化"/>
+
+    <CheckBox
+        android:id="@+id/checkHealth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="健康"/>
+
+    <CheckBox
+        android:id="@+id/checkFinance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="财经"/>
+
+    <CheckBox
+        android:id="@+id/checkSports"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="体育"/>
+
+    <CheckBox
+        android:id="@+id/checkVehicle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="汽车"/>
+
+    <CheckBox
+        android:id="@+id/checkTechnology"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="科技"/>
+
+    <CheckBox
+        android:id="@+id/checkSociety"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="社会"/>
+
+    <!-- Non-checkable buttons -->
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="取消"/>
+
+    <Button
+        android:id="@+id/buttonConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确认"/>
+</LinearLayout>

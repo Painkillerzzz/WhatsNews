@@ -142,7 +142,6 @@
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:clickable="true"
-            android:onClick="onShareButtonClick"
             android:src="@drawable/icon_share" />
 
         <!-- 评论按钮 -->
@@ -153,7 +152,6 @@
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:clickable="true"
-            android:onClick="onCommentButtonClick"
             android:src="@drawable/icon_comment" />
 
         <!-- 点赞按钮 -->
@@ -164,7 +162,6 @@
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:clickable="true"
-            android:onClick="onLikeButtonClick"
             android:src="@drawable/icon_favorite_border" />
 
     </LinearLayout>
